@@ -1,0 +1,9 @@
+langgraph
+langchain
+langchain-core
+langgraph-checkpoint-sqlite
+langgraph-cli
+langchain-anthropic
+langchain-openai
+python-dotenv
+langchain-ollama
