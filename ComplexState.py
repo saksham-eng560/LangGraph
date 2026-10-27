@@ -7,6 +7,7 @@ class AgentState(TypedDict):
     name : str
 
 def Node_Func(state : AgentState) -> AgentState:
+    """Node Function that takes in a state and returns a state"""
     currList = state["values"]
     sum = 0
     for i in currList:

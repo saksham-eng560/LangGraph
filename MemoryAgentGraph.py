@@ -12,7 +12,8 @@ llm = ChatOllama(model="qwen3.5:4b")
 def process(state: AgentState) -> AgentState:
     response = llm.invoke(state["messages"])
     print(f"\nAI: {response.content}")
-    return {"messages": state["messages"] + [AIMessage(content=response.content)]}
+    state["messages"].append(response)
+    return state
 
 
 graph = StateGraph(AgentState)
@@ -26,8 +27,7 @@ user_input = input("Enter: ")
 
 while user_input != "exit":
     convo_history.append(HumanMessage(content=user_input))
-    result = agent.invoke({"messages" : convo_history})
-    convo_history = result["messages"]
+    convo_history = agent.invoke({"messages" : convo_history})["messages"]
     user_input = input("Enter: ")
 
 
