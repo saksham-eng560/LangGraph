@@ -1,6 +1,6 @@
-from typing import Sequence, Annotated, List, TypedDict
+from typing import Sequence, Annotated, TypedDict
 from langgraph.graph import StateGraph, START, END
-from langchain_core.messages import BaseMessage, SystemMessage, ToolMessage
+from langchain_core.messages import BaseMessage, SystemMessage
 from langchain_ollama import ChatOllama
 from langchain_core.tools import tool
 from langgraph.prebuilt import ToolNode
@@ -23,7 +23,7 @@ llm = ChatOllama(model="qwen3.5:4b").bind_tools(tools=ToolList)
 def Agent(state : AgentState) -> AgentState:
     """Agent Function that takes in a state and returns a state"""
     system_call = SystemMessage(content="You are my AI , please help me")
-    response = llm.invoke([system_call, *state["messages"]])
+    response = llm.invoke([system_call, state["messages"]])
     return {"messages": [response]}
 
 def continuer(state : AgentState) -> AgentState:

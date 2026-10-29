@@ -20,12 +20,14 @@ graph = StateGraph(AgentState)
 graph.add_node("process", process)
 graph.add_edge(START, "process")
 graph.add_edge("process", END)
-agent = graph.compile()
+
+
+app = graph.compile()
 
 user_input = input("Enter: ")
 
 while user_input != "exit":
-    result = agent.invoke({"messages" : [HumanMessage(content=user_input)]})   
+    result = app.invoke({"messages" : [HumanMessage(content=user_input)]})   
     user_input = input("Enter: ") 
 
 

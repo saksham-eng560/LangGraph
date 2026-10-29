@@ -7,8 +7,8 @@ class State_Of_Graph(TypedDict):
 
 def Node_Of_Graph(state : State_Of_Graph) -> State_Of_Graph:
     """First Node of the Graph , adds Greeting"""    #reqiured or LLM to understand the notion or use of the Node
-    state["message"] = "Heyyyyyy" + " Howw are you doinggg"  
-    state["name"] = " Sakshammm"             #NODE
+    state["message"] = state["message"]+ "Heyyyyyy" + " Howw are you doinggg"  
+    state["name"] += " Sakshammm"             #NODE
     return state
 
 graph = StateGraph(State_Of_Graph)      #GRAPH FORMATION
